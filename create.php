@@ -15,6 +15,6 @@
             header('Location:index.php');
         }else{
         echo "El registro no se pudo guardar". mysqli_error($conn);
-        }
+        }         #Devuelve una cadena que describe el último error
     }
 ?>

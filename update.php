@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PHP MySQL CRUD</title>
+    <!--Bootstrap 4-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script>
@@ -16,7 +17,7 @@
                 return false;
             }
         }
-    </script>
+    </script> <!--Validación del id en el fomrulario, si esta vacio retorna un alert-->
 </head>
 
 <body>
@@ -28,14 +29,15 @@
         </nav>
         <?php
             include("conexion.php");
-            if(isset($_GET['id'])){
+            if(isset($_GET['id'])){ #Determina si una variable está definida y no es NULL / isset
                 $id = $_GET['id'];
 
                 $query = "SELECT * FROM datos WHERE id = $id";
                 $result = mysqli_query($conn, $query);
-
+                #Obtiene el número de filas de un conjunto de resultados / mysqli_num_rows
                 if(mysqli_num_rows($result) == 1){
                     $row = mysqli_fetch_array($result);
+                    #Obtiene una fila de resultados como un array asociativo, numérico, o ambos
                     $id = $row['id'];
                     $name = $row['nombre'];
                     $address = $row['dirrecion'];
@@ -51,7 +53,7 @@
                 $update = "UPDATE datos set nombre = '$name', dirrecion ='$address', telefono = '$phone' WHERE id = $id";
                 mysqli_query($conn, $update);
                 $_SESSION['message'] = 'Registro actualizado exitosamente';
-                $_SESSION['message_type'] = 'info';
+                $_SESSION['message_type'] = 'info'; # Función de bootstrap
                 header('Location:index.php');
             }
         ?>

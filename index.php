@@ -39,7 +39,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?php session_unset(); }?>
+            <?php session_unset(); } #Libera todas las variables de sesión ?>
             <div class="row">
                 <div class="col-md-4 mx-auto">
                     <div class="card card-body">
@@ -80,7 +80,9 @@
                             <?php 
                                         $query = "SELECT * FROM datos";
                                         $result = mysqli_query($conn, $query);
-                                        while($row = mysqli_fetch_array($result)){ ?>
+                                        while($row = mysqli_fetch_array($result)){ 
+                                        #Obtiene una fila de resultados como un array asociativo, numérico, o ambos
+                            ?>
                             <tr>
                                 <td><?php echo $row['id'] ?></td>
                                 <td><?php echo $row['nombre'] ?></td>
