@@ -1,10 +1,10 @@
 <?php  
     session_start(); #Inicia una secion o reanuda una exixtente
-    $servername = "localhost";
-    $username = "root";
-    $password = "1234567890z";
-    $database = "sistema";
-    $port = "3306";
+    $servername = "localhost";   #Localhost o IP
+    $username = "root";          #Usuario de la dB
+    $password = "1234567890z";   #Contraseña de la dB
+    $database = "sistema";       #Nombre de la db
+    $port = "3306";              #puerto por el que se conecta la dB
     $conn = mysqli_connect($servername, $username, $password, $database, $port);
         if (!$conn) {
         die("Conexion no establecida: " . mysqli_connect_error());
